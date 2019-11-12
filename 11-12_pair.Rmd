@@ -1,0 +1,35 @@
+---
+title: "11-12_pair"
+author: "Jackson Kehoe"
+date: "11/12/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(googlesheets4)
+```
+
+```{r}
+sheets_deauth()
+x <- read_sheet("13NhlT-Oik5P4NOKRWwrJ7xZQlddFNk81HHEw9wkWglM")
+```
+
+```{r}
+#using scatterplot, to figure out the relationship between
+#partisanship and dvote
+ggplot(x, aes(x = partisanship, y = dvote)) + 
+  geom_point() + 
+  geom_jitter(height = .3) + 
+  geom_smooth(method = "lm")
+```
+
+```{r}
+mod <- lm(data = x, dvote ~ partisanship)
+
+```
+
