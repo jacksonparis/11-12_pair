@@ -25,11 +25,13 @@ x <- read_sheet("13NhlT-Oik5P4NOKRWwrJ7xZQlddFNk81HHEw9wkWglM")
 ggplot(x, aes(x = partisanship, y = dvote)) + 
   geom_point() + 
   geom_jitter(height = .3) + 
-  geom_smooth(method = "lm")
+  geom_smooth(method = "glm", method.args = list(family ="binomial"), se=FALSE)
 ```
 
 ```{r}
 mod <- lm(data = x, dvote ~ partisanship)
+
+mod2 <- 
 
 ```
 
